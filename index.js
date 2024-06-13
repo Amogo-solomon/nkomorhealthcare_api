@@ -33,16 +33,16 @@ const options = {
             }
         ]
     },
-    apis: ["./swagger/api-docs.js"]
+    apis: ["./swagger/*.js"]
 }
 
 const app = express();
 const specs = swaggerJsDoc(options);
 
 // Define a route for the root URL
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.send('Welcome to Nkmor Healthcare APIs');
-});
+}); */
 
 // Define a route for serving the api-docs.js file
 app.get('/api-docs.js', (req, res) => {
