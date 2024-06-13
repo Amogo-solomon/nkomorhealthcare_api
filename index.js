@@ -37,6 +37,14 @@ const options = {
 
 const app = express();
 const specs = swaggerJsDoc(options);
+
+// Define a route for the root URL
+app.get('/', (req, res) => {
+    res.send('Welcome to Nkmor Healthcare APIs');
+});
+
+
+
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
 app.use(express.json());
 app.listen(PORT, () => console.log(`The server is running on the PORT: ${PORT}`))
