@@ -39,9 +39,24 @@ const app = express();
 const specs = swaggerJsDoc(options);
 
 // Define a route for the root URL
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
     res.send('Welcome to Nkmor Healthcare APIs');
 });
+
+// Define a route for serving the api-docs.js file
+app.get('/api-docs.js', (_req, res) => {
+    // Read the contents of api-docs.js file
+    fs.readFile('./swagger/api-docs.js', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading api-docs.js file:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        // Send the contents of the file as the response
+        res.type('application/javascript').send(data);
+    });
+});
+
 
 
 
