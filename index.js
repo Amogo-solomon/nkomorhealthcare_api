@@ -45,7 +45,7 @@ const specs = swaggerJsDoc(options);
 }); */
 
 // Define a route for serving the api-docs.js file
-app.get('/api-docs.js', (req, res) => {
+app.get('./swagger/api-docs.js', (req, res) => {
     // Read the contents of api-docs.js file
     fs.readFile('./swagger/api-docs.js', 'utf8', (err, data) => {
         if (err) {
@@ -59,6 +59,6 @@ app.get('/api-docs.js', (req, res) => {
 });
 
 // Serve Swagger UI at /api-docs endpoint
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
+app.use("./swagger/api-docs.js", swaggerUI.serve, swaggerUI.setup(specs))
 app.use(express.json());
 app.listen(PORT, () => console.log(`The server is running on the PORT: ${PORT}`))
