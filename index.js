@@ -44,6 +44,11 @@ const specs = swaggerJsDoc(options);
     res.send('Welcome to Nkmor Healthcare APIs');
 }); */
 
+app.get('/', (req, res) => {
+    res.send('Welcome to Nkmor Healthcare APIs');
+});
+
+
 // Define a route for serving the api-docs.js file
 app.get('./swagger/api-docs.js', (req, res) => {
     // Read the contents of api-docs.js file
@@ -62,3 +67,5 @@ app.get('./swagger/api-docs.js', (req, res) => {
 app.use("./swagger/api-docs.js", swaggerUI.serve, swaggerUI.setup(specs))
 app.use(express.json());
 app.listen(PORT, () => console.log(`The server is running on the PORT: ${PORT}`))
+
+
