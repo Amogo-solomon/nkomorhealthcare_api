@@ -33,7 +33,7 @@ const options = {
             }
         ]
     },
-    apis: ["./swagger/*.js"]
+    apis: ["./swagger/api-docs.js"]
 }
 
 const app = express();
